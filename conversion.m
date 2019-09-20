@@ -1,12 +1,12 @@
 %% Converting .txt files to .mat
-
+% this code is taken from NIRS_SPM corresponding to Shimadzu labnirs and modified to use in an easier way for multiple files
 close all
 clear
 clc
 %%
 sub=[1:7];
-
-addpath(genpath('C:\Users\Hashini\Google Drive\Lab work\TIBS_LABNIRS\fNIRS TIBS\'));
+% add path & file name 
+addpath(genpath(''));
 for i=1:length(sub)
 path_file_n=['subject' num2str(sub(i)) '_TRT_Hb.txt'];
         fid = fopen(path_file_n);
@@ -49,5 +49,7 @@ path_file_n=['subject' num2str(sub(i)) '_TRT_Hb.txt'];
         nirs_data.fs = fs;
 %         set(handles.edit_fs, 'string', num2str(fs));
         nirs_data.nch = size(nirs_data.oxyData,2);
-        save(['C:\Users\hashini\Google Drive\Lab work\TIBS_LABNIRS\fNIRS TIBS\Subject' num2str(sub(i)) '\nirs_hbo_data_sub' num2str(sub(i)), '_trt.mat'],'nirs_data');
+        
+        % saving location and name 
+        save(['\nirs_hbo_data_sub' num2str(sub(i)), '_trt.mat'],'nirs_data');
 end
